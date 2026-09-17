@@ -26,7 +26,7 @@ export default function App({
     })
 
   return (
-    <CatalogProvider initialState={resolvedInitial}>
+    <CatalogProvider initialState={initialState}>
       <CatalogDashboard isServerDataAvailable={isServerDataAvailable} />
     </CatalogProvider>
   )

@@ -32,7 +32,7 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", library: "@nuskin/gateway-mfe" });
 });
 
-/** Storefront-style SSR probe: GET /ssr/:mfeId?url=/en/us/shop */
+/** Host-style SSR probe: GET /ssr/:mfeId?url=/us/en/shop */
 app.get("/ssr/:mfeId", async (req, res) => {
   const renderer = renderers[req.params.mfeId];
   if (!renderer) {
@@ -42,9 +42,12 @@ app.get("/ssr/:mfeId", async (req, res) => {
 
   try {
     const result = await renderer.renderAndExtractContext({
-      requestUrl: String(req.query.url || req.originalUrl || "/"),
+      requestUrl: String(req.query.url || "/"),
       market: req.query.market,
       language: req.query.language,
+      params: {
+        customerTier: req.query.customerTier,
+      },
     });
     res.json(result);
   } catch (error) {
@@ -63,7 +66,12 @@ app.get("/preview/:mfeId", async (req, res) => {
 
   try {
     const { markup, dataScript, head } = await renderer.renderAndExtractContext({
-      requestUrl: String(req.query.url || "/en/us/demo"),
+      requestUrl: String(req.query.url || "/us/en/demo"),
+      market: req.query.market,
+      language: req.query.language,
+      params: {
+        customerTier: req.query.customerTier,
+      },
     });
     res.type("html").send(
       `<!DOCTYPE html><html><head>${head || ""}</head><body>${markup}${dataScript}</body></html>`,

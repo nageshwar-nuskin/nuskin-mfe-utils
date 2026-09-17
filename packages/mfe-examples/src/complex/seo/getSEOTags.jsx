@@ -8,8 +8,8 @@ function resolveCanonical(seo, params) {
 }
 
 /**
- * Same contract as production MFEs — used by gateway SSR (renderToString) and
- * storefront RemoteLoader + react-helmet on the client.
+ * Same contract as production MFEs — used by @nuskin/gateway-mfe SSR
+ * (renderToString) and host RemoteLoader + react-helmet on the client.
  */
 export function getSEOTags(context) {
   const serverProps = context?.serverProps || context?.params || {}

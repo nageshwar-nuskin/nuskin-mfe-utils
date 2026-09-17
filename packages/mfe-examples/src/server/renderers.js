@@ -28,9 +28,15 @@ export const complexDemoMfeRenderer = createMfeRenderer({
     getSEOTags: complexDemoMfeGetSEOTags,
   },
   buildProps: ({ ctx, serverData }) => ({
-    initialState: serverData.initialState,
+    ...serverData,
+    isServerDataAvailable: true,
     url: ctx.url,
     locale: ctx.locale,
+    params: {
+      url: ctx.url,
+      locale: ctx.locale,
+      ...(ctx.params || {}),
+    },
   }),
   stateGlobalName: "__COMPLEX_DEMO_MFE_DATA__",
 });

@@ -374,26 +374,11 @@ Sibling MFEs: `yarn dev:build-mfes` then `yarn start` in header-mfe / site-visua
 yarn add @nuskin/gateway-mfe
 ```
 
-See [packages/gateway-mfe/README.md](packages/gateway-mfe/README.md).
+See [packages/gateway-mfe/README.md](packages/gateway-mfe/README.md) and [examples/README.md](examples/README.md).
 
 ```bash
-curl http://localhost:3100/health
-curl http://localhost:3100/v1/adapters
-```
-
-### Compose example
-
-```bash
-curl -s -X POST http://localhost:3100/v1/render \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "url": "/us/en/shop",
-    "locale": { "market": "us", "language": "en" },
-    "slots": [
-      { "slotId": "header", "mfeId": "header_mfe", "ssr": true },
-      { "slotId": "main-content", "mfeId": "site_visual_builder", "ssr": false }
-    ]
-  }' | jq .
+curl -s http://localhost:5510/health
+curl -s 'http://localhost:5510/ssr/example_mfe?url=/us/en/demo'
 ```
 
 ---
@@ -466,8 +451,7 @@ Verify: `curl http://localhost:3100/v1/adapters`
 
 ```bash
 yarn build      # Build all packages
-yarn dev        # Start gateway-server in watch mode
-yarn start      # Start compiled server
+yarn dev        # Start mfe-examples on :5510
 yarn typecheck  # Typecheck all packages
 ```
 

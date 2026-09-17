@@ -1,7 +1,7 @@
 import React from 'react'
 
 /**
- * Optional — gateway calls this before renderToString when present.
+ * Optional — createMfeRenderer calls this before renderToString when present.
  */
 export async function getServerSideProps({ params }) {
   const url = params?.url || '/'

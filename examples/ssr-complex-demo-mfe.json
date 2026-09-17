@@ -1,0 +1,9 @@
+{
+  "requestUrl": "/us/en/catalog/skincare",
+  "market": "us",
+  "language": "en",
+  "params": {
+    "customerTier": "gold",
+    "locale": { "market": "us", "language": "en" }
+  }
+}

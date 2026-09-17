@@ -1,38 +1,43 @@
 # Examples
 
-Demo MFEs live in **`packages/mfe-examples`** (library) — not separate dev servers.
+Source of truth: **[`packages/mfe-examples`](../packages/mfe-examples/)**.
 
-## Local dev (one process for examples)
+SSR uses `@nuskin/gateway-mfe` in-process (`createMfeRenderer` + `inlineModule`). There is **no** HTTP gateway on port 3100 and **no** `/mfe-assets` or `POST /v1/render`.
+
+## Local dev
 
 ```bash
-# Builds example client bundles + starts gateway on :3100
+yarn install
+yarn build
 yarn dev
 ```
 
+`yarn dev` starts `@nuskin/mfe-examples` on **http://localhost:5510**.
+
 | What | URL |
 |------|-----|
-| Gateway API | http://localhost:3100 |
-| Example client `remoteEntry` | http://localhost:3100/mfe-assets/example_mfe/remoteEntry.js |
-| Complex client `remoteEntry` | http://localhost:3100/mfe-assets/complex_demo_mfe/remoteEntry.js |
+| Health | http://localhost:5510/health |
+| Example client `remoteEntry` | http://localhost:5510/static/example_mfe/remoteEntry.js |
+| Complex client `remoteEntry` | http://localhost:5510/static/complex_demo_mfe/remoteEntry.js |
+| SSR JSON | http://localhost:5510/ssr/example_mfe?url=/us/en/demo |
+| HTML preview | http://localhost:5510/preview/complex_demo_mfe?url=/us/en/catalog/skincare |
 
-**SSR** for `example_mfe` / `complex_demo_mfe` uses inline imports (no port 5510/5512).
+```bash
+curl -s 'http://localhost:5510/ssr/example_mfe?url=/us/en/demo&market=us&language=en'
+curl -s 'http://localhost:5510/ssr/complex_demo_mfe?url=/us/en/catalog/skincare&customerTier=gold'
+curl -s 'http://localhost:5510/preview/example_mfe?url=/us/en/demo'
+```
 
-**With storefront:** run gateway + storefront (2 apps). Production MFEs (header, SVB) still use their own ports when testing federation.
+Sample `renderAndExtractContext` payloads: [ssr-example-mfe.json](./ssr-example-mfe.json), [ssr-complex-demo-mfe.json](./ssr-complex-demo-mfe.json).
 
 ## Packages
 
-| Package | Purpose |
-|---------|---------|
-| [@nuskin/mfe-examples](../packages/mfe-examples/) | Source + client webpack build |
-| [minimal-mfe](./minimal-mfe/) | Optional standalone federation sandbox |
-| [complex-mfe](./complex-mfe/) | Optional standalone federation sandbox |
+| Path | Purpose |
+|------|---------|
+| [@nuskin/mfe-examples](../packages/mfe-examples/) | Demo MFEs + SSR + client federation (use this) |
+| [minimal-mfe](./minimal-mfe/) | Optional webpack remote sandbox (static only, port 5510) |
+| [complex-mfe](./complex-mfe/) | Optional webpack remote sandbox (static only, port 5512) |
 
-## Compose payloads
+Do not run `yarn dev` and `examples/minimal-mfe` at the same time — both default to port 5510.
 
-| File | MFE |
-|------|-----|
-| [compose-example-mfe.json](./compose-example-mfe.json) | `example_mfe` |
-| [compose-complex-demo-mfe.json](./compose-complex-demo-mfe.json) | `complex_demo_mfe` (+ SEO/state) |
-| [compose-header-only.json](./compose-header-only.json) | `header_mfe` (needs header on :5501) |
-
-See [STOREFRONT_INTEGRATION.md](./STOREFRONT_INTEGRATION.md).
+See [STOREFRONT_INTEGRATION.md](./STOREFRONT_INTEGRATION.md) for copying the pattern into a real MFE.
