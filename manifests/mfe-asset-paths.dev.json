@@ -1,0 +1,35 @@
+{
+  "baseUrl": "http://localhost:3100",
+  "mfes": {
+    "header_mfe": {
+      "clientRoot": "../../header-mfe/dist",
+      "serverRoot": "../../header-mfe/dist/server",
+      "clientEntry": "remoteEntry.js",
+      "serverEntry": "remoteEntry.js"
+    },
+    "site_visual_builder": {
+      "clientRoot": "../../site-visual-builder/dist",
+      "serverRoot": "../../site-visual-builder/dist/server",
+      "clientEntry": "remoteEntry.js",
+      "serverEntry": "remoteEntry.js",
+      "extraFiles": {
+        "loadable-stats.json": "../../site-visual-builder/dist/loadable-stats.json",
+        "server/loadable-stats.json": "../../site-visual-builder/dist/server/loadable-stats.json"
+      }
+    },
+    "example_mfe": {
+      "clientRoot": "../mfe-examples/dist/static/example_mfe",
+      "serverRoot": "../mfe-examples/dist/static/example_mfe",
+      "clientEntry": "remoteEntry.js",
+      "serverEntry": "remoteEntry.js",
+      "inlineModule": true
+    },
+    "complex_demo_mfe": {
+      "clientRoot": "../mfe-examples/dist/static/complex_demo_mfe",
+      "serverRoot": "../mfe-examples/dist/static/complex_demo_mfe",
+      "clientEntry": "remoteEntry.js",
+      "serverEntry": "remoteEntry.js",
+      "inlineModule": true
+    }
+  }
+}

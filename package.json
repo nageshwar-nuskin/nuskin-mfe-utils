@@ -1,0 +1,20 @@
+{
+  "name": "mfe-utils",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared Nu Skin MFE packages: render gateway, branch picker, and Contentstack client",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspace @nuskin/gateway-contracts run build && yarn workspace @nuskin/gateway-mfe run build && yarn workspace @nuskin/mfe-examples run build && yarn workspace @nuskin/gateway-server run build && yarn workspace @nuskin/gateway-sdk run build && yarn workspace @nuskin/gateway-runtime run build && yarn workspace @nuskin/mfe-branch-picker run build && yarn workspace @nuskin/mfe-contentstack run build",
+    "dev": "yarn workspace @nuskin/mfe-examples run dev",
+    "dev:build-mfes": "node scripts/build-sibling-mfes.js",
+    "dev:full": "yarn dev:build-mfes",
+    "typecheck": "yarn workspace @nuskin/gateway-contracts run typecheck && yarn workspace @nuskin/gateway-mfe run typecheck && yarn workspace @nuskin/gateway-server run typecheck && yarn workspace @nuskin/gateway-sdk run typecheck && yarn workspace @nuskin/gateway-runtime run typecheck"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "yarn@1.22.22"
+}

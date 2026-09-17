@@ -1,0 +1,24 @@
+{
+  "url": "/us/en/catalog/skincare",
+  "locale": { "market": "us", "language": "en" },
+  "slots": [
+    {
+      "slotId": "catalog-demo",
+      "mfeId": "complex_demo_mfe",
+      "loaderIndex": 0,
+      "ssr": true,
+      "params": {
+        "url": "/us/en/catalog/skincare",
+        "customerTier": "gold",
+        "locale": { "market": "us", "language": "en" }
+      }
+    }
+  ],
+  "mfeRemoteConfig": {
+    "complex_demo_mfe": {
+      "clientEntry": "http://localhost:3100/mfe-assets/complex_demo_mfe/remoteEntry.js",
+      "serverEntry": "http://localhost:3100/mfe-assets/complex_demo_mfe/server/remoteEntry.js",
+      "ssr": true
+    }
+  }
+}

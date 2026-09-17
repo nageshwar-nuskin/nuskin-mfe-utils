@@ -1,0 +1,31 @@
+{
+  "name": "@nuskin/gateway-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional multi-slot compose (library only — no HTTP server)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test src/registry/manifest-merge.test.ts"
+  },
+  "dependencies": {
+    "@module-federation/node": "2.7.7",
+    "@module-federation/runtime": "0.15.0",
+    "@nuskin/gateway-contracts": "0.1.0",
+    "@nuskin/gateway-mfe": "0.1.0",
+    "@nuskin/mfe-examples": "0.1.0",
+    "@loadable/server": "^5.16.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

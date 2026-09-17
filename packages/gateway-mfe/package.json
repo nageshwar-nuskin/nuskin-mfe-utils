@@ -1,0 +1,36 @@
+{
+  "name": "@nuskin/gateway-mfe",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Installable SSR library for micro-frontends (render + federation helpers)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@module-federation/node": "2.7.7",
+    "@module-federation/runtime": "0.15.0",
+    "@nuskin/gateway-contracts": "0.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.7.3"
+  }
+}

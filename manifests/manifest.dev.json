@@ -1,0 +1,108 @@
+{
+  "version": "dev",
+  "defaults": {
+    "timeoutMs": 8000,
+    "ssr": false,
+    "assetBase": "http://localhost:5500"
+  },
+  "mfes": {
+    "header_mfe": {
+      "id": "header_mfe",
+      "displayName": "Global Header",
+      "ssr": true,
+      "slot": "header",
+      "critical": true,
+      "federation": {
+        "name": "header_mfe",
+        "client": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/header_mfe/remoteEntry.js"
+        },
+        "server": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/header_mfe/server/remoteEntry.js",
+          "entryGlobalName": "header_mfe"
+        }
+      },
+      "fallback": {
+        "html": "<header data-mfe-fallback aria-hidden=\"true\"></header>",
+        "csrOnSsrFailure": true
+      }
+    },
+    "complex_demo_mfe": {
+      "id": "complex_demo_mfe",
+      "displayName": "Complex catalog demo",
+      "ssr": true,
+      "slot": "catalog-demo",
+      "critical": false,
+      "federation": {
+        "name": "complex_demo_mfe",
+        "client": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/complex_demo_mfe/remoteEntry.js"
+        },
+        "server": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/complex_demo_mfe/server/remoteEntry.js",
+          "entryGlobalName": "complex_demo_mfe"
+        }
+      },
+      "fallback": {
+        "html": "<div data-mfe-fallback>Catalog demo unavailable</div>",
+        "csrOnSsrFailure": true
+      }
+    },
+    "example_mfe": {
+      "id": "example_mfe",
+      "displayName": "Example Banner (demo)",
+      "ssr": true,
+      "slot": "demo-banner",
+      "critical": false,
+      "federation": {
+        "name": "example_mfe",
+        "client": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/example_mfe/remoteEntry.js"
+        },
+        "server": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/example_mfe/server/remoteEntry.js",
+          "entryGlobalName": "example_mfe"
+        }
+      },
+      "fallback": {
+        "html": "<div data-mfe-fallback>Example MFE unavailable</div>",
+        "csrOnSsrFailure": true
+      }
+    },
+    "site_visual_builder": {
+      "id": "site_visual_builder",
+      "displayName": "Site Visual Builder",
+      "ssr": true,
+      "slot": "main-content",
+      "critical": false,
+      "federation": {
+        "name": "site_visual_builder",
+        "client": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/site_visual_builder/remoteEntry.js"
+        },
+        "server": {
+          "remoteEntry": "http://localhost:3100/mfe-assets/site_visual_builder/server/remoteEntry.js",
+          "entryGlobalName": "site_visual_builder"
+        }
+      },
+      "loadable": {
+        "clientStats": "http://localhost:3100/mfe-assets/site_visual_builder/loadable-stats.json",
+        "serverStats": "http://localhost:3100/mfe-assets/site_visual_builder/server/loadable-stats.json"
+      },
+      "fallback": {
+        "html": "<div data-mfe-fallback>Content unavailable</div>",
+        "csrOnSsrFailure": true
+      }
+    }
+  },
+  "composition": {
+    "layouts": {
+      "storefront-default": {
+        "slots": [
+          "header",
+          "main-content"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "/us/en/shop",
+  "locale": { "market": "us", "language": "en" },
+  "slots": [
+    {
+      "slotId": "header",
+      "mfeId": "header_mfe",
+      "loaderIndex": 0,
+      "ssr": true,
+      "params": { "url": "/us/en/shop" }
+    }
+  ],
+  "mfeRemoteConfig": {
+    "header_mfe": {
+      "clientEntry": "http://localhost:5501/static/remoteEntry.js",
+      "serverEntry": "http://localhost:5501/static/server/remoteEntry.js",
+      "ssr": true
+    }
+  }
+}
